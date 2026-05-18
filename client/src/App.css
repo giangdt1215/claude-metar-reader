@@ -1,0 +1,317 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background: #f0f4f8;
+  color: #1a202c;
+  min-height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.header {
+  background: linear-gradient(135deg, #1e40af 0%, #0ea5e9 100%);
+  color: white;
+  padding: 2.5rem 1rem 2.25rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  opacity: 0.88;
+}
+
+/* ── Main layout ── */
+.main {
+  flex: 1;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+  width: 100%;
+}
+
+/* ── Search form ── */
+.search-form {
+  margin-bottom: 2rem;
+}
+
+.search-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.875rem 1.25rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: white;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-transform: uppercase;
+}
+
+.search-input:focus {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.18);
+}
+
+.search-btn {
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.18s, transform 0.1s;
+}
+
+.search-btn:hover:not(:disabled) { background: #0284c7; }
+.search-btn:active:not(:disabled) { transform: scale(0.97); }
+.search-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.hint {
+  font-size: 0.8rem;
+  color: #64748b;
+  padding-left: 0.25rem;
+  line-height: 1.5;
+}
+
+/* ── Error ── */
+.error-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #991b1b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.error-icon { font-size: 1.2rem; line-height: 1.5; }
+
+/* ── Results ── */
+.results { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.airport-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.airport-emoji { font-size: 3rem; line-height: 1; flex-shrink: 0; }
+
+.airport-name {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.3rem;
+}
+
+.airport-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.airport-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0284c7;
+  background: #e0f2fe;
+  padding: 0.15rem 0.5rem;
+  border-radius: 5px;
+  letter-spacing: 0.05em;
+}
+
+.obs-time {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+/* ── Summary card ── */
+.summary-card {
+  background: white;
+  border-left: 4px solid #0ea5e9;
+  border-radius: 0 14px 14px 0;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+}
+
+.summary-text {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #334155;
+}
+
+/* ── Weather grid ── */
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 1rem;
+}
+
+.weather-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.25rem 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+
+.card-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.card-value {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+.card-value--sm { font-size: 0.95rem; font-weight: 700; }
+
+.card-detail {
+  font-size: 0.78rem;
+  color: #475569;
+  text-transform: capitalize;
+}
+
+.card-sub {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+}
+
+/* ── Raw METAR ── */
+.raw-metar {
+  background: white;
+  border-radius: 12px;
+  padding: 0.875rem 1.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+}
+
+.raw-metar summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748b;
+  user-select: none;
+  list-style: none;
+}
+
+.raw-metar summary::before { content: '▶  '; font-size: 0.65rem; }
+.raw-metar[open] summary::before { content: '▼  '; }
+
+.raw-text {
+  display: block;
+  margin-top: 0.875rem;
+  padding: 0.875rem 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.875rem;
+  color: #334155;
+  word-break: break-all;
+  line-height: 1.6;
+}
+
+/* ── Example buttons ── */
+.examples {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.examples-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.example-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.example-btn {
+  padding: 0.5rem 1.1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 9px;
+  background: white;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #475569;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+}
+
+.example-btn:hover {
+  border-color: #0ea5e9;
+  color: #0284c7;
+  background: #f0f9ff;
+}
+
+/* ── Footer ── */
+.footer {
+  background: #1e293b;
+  color: #94a3b8;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+}
+
+.footer a { color: #7dd3fc; text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .title { font-size: 1.75rem; }
+  .search-row { flex-direction: column; }
+  .search-btn { width: 100%; }
+  .weather-grid { grid-template-columns: repeat(2, 1fr); }
+  .airport-emoji { font-size: 2.25rem; }
+  .airport-name { font-size: 1.15rem; }
+}
