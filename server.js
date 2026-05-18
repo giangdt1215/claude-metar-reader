@@ -48,6 +48,10 @@ app.get('/api/metar/:icao', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`METAR server running on http://localhost:${PORT}`);
-});
+export default app;
+
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`METAR server running on http://localhost:${PORT}`);
+  });
+}
